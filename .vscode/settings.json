@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "DeepInfernalRedemption.sln"
+    "dotnet.defaultSolution": "Jam01.sln"
 }
