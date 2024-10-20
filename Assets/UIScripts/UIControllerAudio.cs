@@ -1,13 +1,26 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Analytics;
 
 public class UIControllerAudio : MonoBehaviour
 {
     // Start is called before the first frame update
+    public static UIControllerAudio Instance;
     private AudioSource music;
     public AudioClip sfxStarGame;
-
+    
+    private void Awake() {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(this);
+        }else
+        {
+            Destroy(this.gameObject);
+        }
+    }
 
     void Start()
     {
@@ -16,6 +29,6 @@ public class UIControllerAudio : MonoBehaviour
 
     public void ClickAundioOn()
     {
-        music.Play();
+        music.PlayOneShot(sfxStarGame);
     }
 }
