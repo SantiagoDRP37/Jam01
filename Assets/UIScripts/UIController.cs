@@ -12,7 +12,7 @@ public class UIController : MonoBehaviour
 
     public int health;
 
-    [SerializeField] AudioSource effectsSouerce;
+    
 
     private void Awake() {
 
@@ -46,8 +46,4 @@ public class UIController : MonoBehaviour
         }
     }
 
-    public void PlaySFX(AudioClip clip)
-    {
-        effectsSouerce.PlayOneShot(clip);
-    }
 }
