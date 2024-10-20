@@ -6,15 +6,17 @@ using UnityEngine.UI;
 public class UIController : MonoBehaviour
 {
     // Start is called before the first frame update
-    public static UIController instance;
+    public static UIController Instance;
     public Image[] hearts;
     public Sprite heartFull, heartEmpty;
 
     public int health;
 
+    [SerializeField] AudioSource effectsSouerce;
+
     private void Awake() {
 
-        instance = this;    
+         Instance = this;   
     }
 
     
@@ -42,5 +44,10 @@ public class UIController : MonoBehaviour
             hearts[health].sprite = heartEmpty;
             health--;
         }
+    }
+
+    public void PlaySFX(AudioClip clip)
+    {
+        effectsSouerce.PlayOneShot(clip);
     }
 }
