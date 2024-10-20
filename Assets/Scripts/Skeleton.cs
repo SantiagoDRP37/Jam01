@@ -36,7 +36,7 @@ public class Scrip : MonoBehaviour
         if (direction.x >= 0.0f) transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f);
         else transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
 
-        // Si la distancia es menor o igual a la de detección y el enemigo aún no ha emergido
+        // Si la distancia es menor o igual a la de detección
         if (distanceToHero <= detectionDistance)
         {
             transform.position = Vector3.MoveTowards(transform.position, Hero.transform.position, speed * Time.deltaTime);

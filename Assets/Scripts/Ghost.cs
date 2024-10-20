@@ -27,7 +27,7 @@ public class Ghost : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Calculamos la distancia entre el "Hero" y el "Skeleton"
+        // Calculamos la distancia entre el "Hero" y el "Ghost"
         float distanceToHero = Mathf.Abs(Hero.transform.position.x - transform.position.x);
 
         // Orientación enemy
@@ -36,7 +36,7 @@ public class Ghost : MonoBehaviour
         if (direction.x >= 0.0f) transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
         else transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f);
 
-        // Si la distancia es menor o igual a la de detección y el enemigo aún no ha emergido
+        // Si la distancia es menor o igual a la de detección 
         if (distanceToHero <= detectionDistance)
         {
             transform.position = Vector3.MoveTowards(transform.position, Hero.transform.position, speed * Time.deltaTime);
