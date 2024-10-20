@@ -11,6 +11,8 @@ public class Pause : MonoBehaviour
 
     [SerializeField] private GameObject MenuPausa;
 
+    public GameObject Hero;
+
     public void pausa()
     {
         Time.timeScale = 0f;
@@ -23,5 +25,23 @@ public class Pause : MonoBehaviour
         Time.timeScale = 1.0f;
         botonpausa.SetActive(true);
         MenuPausa.SetActive(false);
+    }
+
+    public void restart()
+    {
+        if (Hero.transform.position.x <= 28.0f)
+        {
+            Hero.transform.position = new Vector3(-1.1f, -0.32f, 0);
+            Time.timeScale = 1.0f;
+            botonpausa.SetActive(true);
+            MenuPausa.SetActive(false);
+        } 
+        else
+        {
+            Hero.transform.position = new Vector3(33.0f, 0.64f, 0);
+            Time.timeScale = 1.0f;
+            botonpausa.SetActive(true);
+            MenuPausa.SetActive(false);
+        }
     }
 }

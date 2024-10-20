@@ -8,6 +8,7 @@ TagManager:
   - Hero
   - Pain
   - Ghost
+  - FinalB
   layers:
   - Default
   - TransparentFX

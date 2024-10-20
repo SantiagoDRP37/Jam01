@@ -54,9 +54,13 @@ public class PlayerController_beta : MonoBehaviour
             Jump();
         }
 
-        if (transform.position.y < -5.0f)
+        if (transform.position.y < -5.0f && transform.position.x <= 22.0f)
         {
             transform.position = initialPosition;
+        }
+        else if (transform.position.y < -5.0f && transform.position.x > 22.0f)
+        {
+            transform.position = new Vector3(33.0f, 0.64f, 0);
         }
 
         if (Input.GetKeyDown(KeyCode.X))
@@ -103,6 +107,12 @@ public class PlayerController_beta : MonoBehaviour
         if (collision.gameObject.CompareTag("Pain"))
         {
             Animator.SetTrigger("Hurt");
+        }
+
+        //Detecta colisión con el final
+        if (collision.gameObject.CompareTag("FinalB"))
+        {
+            Time.timeScale = 0f; //esta condición se debe cambiar por la accion final
         }
     }
 
