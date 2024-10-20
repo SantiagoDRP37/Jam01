@@ -7,6 +7,9 @@ public class PlayerController_beta : MonoBehaviour
     public float JumpForce;
     public float Speed;
     public Vector3 initialPosition;
+    public bool isAttacking=false;
+    public CapsuleCollider2D capsuleCollider2D;
+    public PolygonCollider2D PolygonCollider2D;
 
     private Rigidbody2D Rigidbody2D;
     private Animator Animator;
@@ -19,6 +22,9 @@ public class PlayerController_beta : MonoBehaviour
     {
         Rigidbody2D = GetComponent<Rigidbody2D>();
         Animator = GetComponent<Animator>();
+
+        capsuleCollider2D.enabled = true;
+        PolygonCollider2D.enabled = false;
 
         initialPosition = transform.position;
     }
@@ -56,7 +62,18 @@ public class PlayerController_beta : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.X))
         {
             Animator.SetTrigger("Attack");
+            isAttacking = true;
+            capsuleCollider2D.enabled = false;
+            PolygonCollider2D.enabled = true;
         }
+        else
+        {
+            isAttacking = false;
+
+            capsuleCollider2D.enabled = true;
+            PolygonCollider2D.enabled = false;
+        }
+            
 
     }
     private void Jump()
@@ -71,5 +88,22 @@ public class PlayerController_beta : MonoBehaviour
         Rigidbody2D.velocity = new Vector2(Horizontal, Rigidbody2D.velocity.y);
     }
 
-   
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // Verifica si el objeto con el que colisionó es el enemigo (skeleton)
+        if ((collision.gameObject.CompareTag("Skeleton") || collision.gameObject.CompareTag("Ghost")) && !PolygonCollider2D.enabled)
+        {
+            // Acción cuando el enemigo toca al personaje
+            Animator.SetTrigger("Hurt");
+
+            // Aquí puedes añadir lo que debería ocurrir: perder vida, cambiar de animación, etc.
+        }
+
+        // Verificca si colisiona con el suelo dañino
+        if (collision.gameObject.CompareTag("Pain"))
+        {
+            Animator.SetTrigger("Hurt");
+        }
+    }
+
 }

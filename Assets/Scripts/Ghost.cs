@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Scrip : MonoBehaviour
+public class Ghost : MonoBehaviour
 {
     public GameObject Hero;                 // Referencia al personaje principal
     private PlayerController_beta heroController;
@@ -33,8 +33,8 @@ public class Scrip : MonoBehaviour
         // Orientación enemy
         Vector3 direction = Hero.transform.position - transform.position;
 
-        if (direction.x >= 0.0f) transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f);
-        else transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+        if (direction.x >= 0.0f) transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+        else transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f);
 
         // Si la distancia es menor o igual a la de detección y el enemigo aún no ha emergido
         if (distanceToHero <= detectionDistance)
@@ -63,4 +63,3 @@ public class Scrip : MonoBehaviour
     }
 
 }
-
