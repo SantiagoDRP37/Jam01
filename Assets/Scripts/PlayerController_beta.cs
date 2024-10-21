@@ -77,7 +77,7 @@ public class PlayerController_beta : MonoBehaviour
             capsuleCollider2D.enabled = true;
             PolygonCollider2D.enabled = false;
         }
-            
+
 
     }
     private void Jump()
