@@ -15,7 +15,7 @@ public class PlayerController_beta : MonoBehaviour
     private Animator Animator;
     private float Horizontal;
     private bool Grounded;
-
+    private UIController uIController;
 
     // Start is called before the first frame update
     void Start()
@@ -94,25 +94,26 @@ public class PlayerController_beta : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        // Verifica si el objeto con el que colisionó es el enemigo (skeleton)
+        // Verifica si el objeto con el que colisionï¿½ es el enemigo (skeleton)
         if ((collision.gameObject.CompareTag("Skeleton") || collision.gameObject.CompareTag("Ghost")) && !PolygonCollider2D.enabled)
         {
-            // Acción cuando el enemigo toca al personaje
+            // Acciï¿½n cuando el enemigo toca al personaje
             Animator.SetTrigger("Hurt");
+            uIController.UpdateHealthDisplay();
 
-            // Aquí puedes añadir lo que debería ocurrir: perder vida, cambiar de animación, etc.
+            // Aquï¿½ puedes aï¿½adir lo que deberï¿½a ocurrir: perder vida, cambiar de animaciï¿½n, etc.
         }
 
-        // Verificca si colisiona con el suelo dañino
+        // Verificca si colisiona con el suelo daï¿½ino
         if (collision.gameObject.CompareTag("Pain"))
         {
             Animator.SetTrigger("Hurt");
         }
 
-        //Detecta colisión con el final
+        //Detecta colisiï¿½n con el final
         if (collision.gameObject.CompareTag("FinalB"))
         {
-            Time.timeScale = 0f; //esta condición se debe cambiar por la accion final
+            Time.timeScale = 0f; //esta condiciï¿½n se debe cambiar por la accion final
         }
     }
 
