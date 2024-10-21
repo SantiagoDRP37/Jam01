@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.Analytics;
+using UnityEngine.SceneManagement;
 
 
 
@@ -35,7 +37,7 @@ public class Pause : MonoBehaviour
             Time.timeScale = 1.0f;
             botonpausa.SetActive(true);
             MenuPausa.SetActive(false);
-        } 
+        }
         else
         {
             Hero.transform.position = new Vector3(33.0f, 0.64f, 0);
@@ -44,4 +46,6 @@ public class Pause : MonoBehaviour
             MenuPausa.SetActive(false);
         }
     }
+
 }
+
