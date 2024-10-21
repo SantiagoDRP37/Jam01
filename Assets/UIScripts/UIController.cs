@@ -38,7 +38,7 @@ public class UIController : MonoBehaviour
     [ContextMenu("UpdateHealth")] 
     public void UpdateHealthDisplay()
     {
-
+        UnityEngine.Debug.Log(" se resta vida");
         if (health >=0)
         {
             hearts[health].sprite = heartEmpty;
